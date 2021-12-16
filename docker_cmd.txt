@@ -1,0 +1,46 @@
+
+■Docker ハンズオン
+https://kleinblog.net/ecs-ecr-hello-world.html
+
+適当な作業用フォルダを作成し、Dockerfileを作成しましょう。
+
+$ mkdir ecs_test
+
+$ cd ecs_test
+
+$ code Dockerfile（VSCodeを使用している場合）
+
+------  Dockerfile内  ------
+
+FROM nginx:latest
+
+COPY ./src /usr/share/nginx/html
+------------------------------
+■ここでCOPYをしているのは、Hello Worldを表記したhtmlファイル郡です。
+
+$ mkdir src
+
+$ code src/index.html
+
+------  index.html内  ------
+Hello world from ECS nginx!!!
+------------------------------
+■イメージの作成
+$ docker build . -t hello-world-from-ecs
+  -t :イメージの名前
+
+■イメージの確認
+$ docker images
+
+
+■コンテナの起動
+docker run --rm -p 8080:80 hello-world-from-ecs
+
+■コンテナの確認
+$docker ps -a
+
+■コンテナの停止
+$ docker stop コンテナID
+
+■ブラウザから確認
+http://localhost:8080/
