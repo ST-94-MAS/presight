@@ -1,0 +1,106 @@
+
+
+
+
+
+■VPN
+●ローカルマシンにVPN Softetherを入れる
+参考URL:https://qiita.com/mochimochi-inu/items/914debabca56acc20a6d
+参考URL:http://www.trusted-design.net/archives/933/
+
+
+●WSL2
+rootのパスワード:sudo passwd root
+
+●sslのアップデート
+ sudo wget https://www.openssl.org/source/openssl-1.1.1i.tar.gz
+ sudo tar -zxf openssl-1.1.1i.tar.gz
+ cd openssl-1.1.1i
+ ./config --prefix=/usr/local --openssldir=/usr/local/openssl-1.1.1i
+ make -j4 && sudo make install
+ cd /usr/local/src/SoftEtherVPN/
+
+●makeでエラーが出る場合
+apt-get -y install gcc
+
+●cmake
+参照:https://qiita.com/pollenjp/items/391afc3e9f93006b83ba
+wget https://cmake.org/files/v3.19/cmake-3.19.0.tar.gz
+
+wget https://cmake.org/download/cmake-3.19.3.tar.gz
+
+●configureでエラーが出る場合
+apt-get update && apt-get upgrade -y
+apt-get install -y gcc make wget tzdata git libreadline-dev libncurses-dev libssl-dev
+sudo apt-get install zlib1g-dev
+sudo apt-get update && Sudo apt-get install build-essential
+
+●GitがInstall できないとき
+sudo apt-get install gcc
+
+●Gitの導入に必要なツールを先にインストールする。
+
+$ sudo apt-get -y install curl-devel expat-devel gettext-devel openssl-devel zlib-deve
+
+●Gitを導入していきます。まずはソースコードを取得し、解凍する
+cd /usr/local/src/
+sudo wget https://www.kernel.org/pub/software/scm/git/git-2.9.5.tar.gz
+sudo tar xzvf git-2.9.5.tar.gz
+
+●makeコマンドでインストールする。
+make -C build
+
+
+●VPN Server の配置
+cd /usr/local/vpnserver/SoftEtherVPN_Stable/
+make install
+
+------
+cp bin/vpncmd/hamcore.se2 /usr/vpncmd/hamcore.se2
+cp bin/vpncmd/vpncmd /usr/vpncmd/vpncmd
+echo "#!/bin/sh" > /usr/bin/vpncmd
+echo /usr/vpncmd/vpncmd '"$@"' >> /usr/bin/vpncmd
+echo 'exit $?' >> /usr/bin/vpncmd
+chmod 755 /usr/bin/vpncmd
+
+●vpncmd
+参考URL:https://ja.softether.org/4-docs/1-manual/7/7.3
+root@zps-d057:/usr/bin# ./vpncmd
+vpncmd command - SoftEther VPN Command Line Management Utility
+SoftEther VPN Command Line Management Utility (vpncmd command)
+Version 4.34 Build 9745   (English)
+Compiled 2020/04/05 23:20:52 by buildsan at crosswin
+Copyright (c) SoftEther VPN Project. All Rights Reserved.
+
+By using vpncmd program, the following can be achieved.
+
+1. Management of VPN Server or VPN Bridge
+2. Management of VPN Client
+3. Use of VPN Tools (certificate creation and Network Traffic Speed Test Tool)
+
+Select 1, 2 or 3: 3
+
+VPN Tools has been launched. By inputting HELP, you can view a list of the commands that can be used.
+
+VPN Tools>
+VPN Tools>check
+Check command - Check whether SoftEther VPN Operation is Possible
+
+●vpnserverをバックグラウンドで動かす
+cp ./vpnserver /usr/local/vpnserver/
+root@zps-d057:/usr/bin# vi /etc/init.d/vpnserver
+root@zps-d057:/usr/bin# /etc/init.d/vpnserver restart
+Stopping the SoftEther VPN Server service ...
+SoftEther VPN Server service has been stopped.
+The SoftEther VPN Server service has been started.
+
+Let's get started by accessing to the following URL from your PC:
+
+https://192.168.19.170:5555/
+  or
+https://192.168.19.170/
+
+Note: IP address may vary. Specify your server's IP address.
+A TLS certificate warning will appear because the server uses self signed certificate by default. That is natural. Continue with ignoring the TLS warning.
+
+root@zps-d057:/usr/bin#

@@ -1,0 +1,47 @@
+
+
+■使用
+https://docs.microsoft.com/ja-jp/partner-center/manage-your-partner-network-benefits
+
+・ロールの設定
+割り当ては全体管理者
+全体管理者が Azure Active Direvtoryで作成されたユーザーを割り当て
+
+
+・使用量ベースサブスクリプション
+100 ドル/月 (または現地通貨で同等の額) の Azure 月単位クレジット
+
+・請求先
+毎月のサポート プランの料金は、アカウントに含まれているサブスクリプションまたはユーザーの数に関係なく、1 つの課金アカウントが対象となります。
+つまりMPNアカウントの全体管理者宛
+
+こんにちは。
+Azure 料金について質問させていただいてもよろしいでしょうか。
+
+現在Microsoft365 E3を使用しています。
+特典としてあるAzure 100ドル/月を使用したいと考えています。
+全体管理者ではなく社内の特定のアカウントに割り当てたいと思っています。
+
+次の3点が質問となります。
+
+・アカウントはライセンス(Office365 E3)に割りあってたアカウントでないとAzureの使用はできないでしょうか。
+
+・使用額は100ドルまでは無料の認識ですが、現在Microsoft365 E3で持っているアカウント内で100ドルまでの認識で正しいでしょうか。
+   社内アカウントをA、Bと作成してそれぞれがAzureを使用した際にはA、Bが使用した分の料金
+   (Aが60ドル、Bが50ドル使用した場合無料分の100ドルが引かれた10ドル)が全体管理者に請求される認識です。
+
+・無料分の100ドルを超えてしまった場合は自動で停止させることは可能でしょうか？？ 
+ 
+ 
+ 
+
+
+https://docs.microsoft.com/ja-jp/azure/vpn-gateway/vpn-gateway-about-vpn-devices
+
+
+https://docs.microsoft.com/ja-jp/azure/active-directory/develop/active-directory-how-applications-are-added
+
+https://azuread.net/archives/9397
+
+https://docs.microsoft.com/ja-jp/azure/app-service/configure-language-java?pivots=platform-linux
+
